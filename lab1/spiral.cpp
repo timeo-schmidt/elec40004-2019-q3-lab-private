@@ -36,7 +36,7 @@ int main(int argc, char **argv)
     if(argc>5){
         s5=strtof(argv[5], nullptr);
     }
-    
+
     // Note: this is very naughty, but if we only have structures we can't stop the user doing it.
     d.min_x=-1.0;
     d.min_y=-1.0;
@@ -45,7 +45,7 @@ int main(int argc, char **argv)
 
     float PI2=6.2831853f;
 
-    Drawing_add_square(&d, "powderblue", -110,-110, 110,110);
+    d.add_square("powderblue", -110,-110, 110,110);
 
     for(int i=0; i<1024; i++){
         double x=sin(i/s1*PI2)*100*((1024-i)/1024.0);
@@ -53,8 +53,8 @@ int main(int argc, char **argv)
         float r=sin(i/s2)*0.5+0.5;
         float g=sin(i/s3)*0.5+0.5;
         float b=sin(i/s4)*0.5+0.5;
-        Drawing_add_circle(&d, make_colour(r,g,b), x, y, sin(i/s5)*3+4);
+        d.add_circle(make_colour(r,g,b), x, y, sin(i/s5)*3+4);
     }
 
-    Drawing_write_svg(&d);
+    d.write_svg();
 }

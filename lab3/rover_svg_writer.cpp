@@ -22,47 +22,6 @@ RoverSVGWriter::~RoverSVGWriter()
     cout<<"</svg>"<<endl;
 }
 
-float RoverSVGWriter::get_time() const
-{
-    return m_time;
-}
-
-vector2d RoverSVGWriter::get_position() const
-{
-    return m_position;
-}
-
-float RoverSVGWriter::get_speed() const
-{
-    return m_speed;
-}
-
-float RoverSVGWriter::get_angle() const
-{
-    return m_angle;
-}
-
-bool RoverSVGWriter::get_pen_down() const
-{
-    return m_pen_down;
-}
-
-void RoverSVGWriter::set_speed(float speed)
-{
-    assert(speed >= 0);
-    m_speed=speed;
-}
-
-void RoverSVGWriter::set_angle(float angle)
-{
-    m_angle=angle;
-}
-
-void RoverSVGWriter::set_pen_down(bool pen_down)
-{
-    m_pen_down=pen_down;
-}
-
 void RoverSVGWriter::advance_time(float dt)
 {
     vector2d p = m_position;

@@ -1,8 +1,11 @@
 #include "rover.hpp"
 #include "rover_svg_writer.hpp"
 
+#include "rover_factory.hpp"
+
 #include <cmath>
 #include <random>
+#include <string>
 
 int main(int argc, const char **argv)
 {
@@ -15,8 +18,8 @@ int main(int argc, const char **argv)
 
     float PI=3.14159265;
 
-    RoverSVGWriter concrete_r;
-    Rover &r = concrete_r;
+    Rover *px = rover_factory(argv[1]);
+    Rover &r = *px;
 
     r.set_pen_down(true);
 
@@ -35,4 +38,6 @@ int main(int argc, const char **argv)
         r.set_angle(angle);
         r.advance_time( dt );
     }
+
+    delete px;
 }

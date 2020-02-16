@@ -1,12 +1,15 @@
 #include "rover.hpp"
 #include "rover_svg_writer.hpp"
 
+#include "rover_factory.hpp"
+
 #include <cmath>
+#include <string>
 
 int main(int argc, const char **argv)
 {
-    RoverSVGWriter concrete_r;
-    Rover &r = concrete_r;
+    Rover *px = rover_factory(argv[1]);
+    Rover &r = *px;
 
     r.set_angle(0);
     r.set_speed(1);
@@ -43,4 +46,6 @@ int main(int argc, const char **argv)
 
     r.set_pen_down(false);
     r.advance_time(1);
+
+    delete px;
 }
